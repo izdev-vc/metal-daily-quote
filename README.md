@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
+# 🤘 Metal Daily Quote
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> One powerful metal lyric. Every day. Forever.
 
-## Get started
+A mobile app for Android (iOS coming soon) that delivers one handpicked quote from metal song lyrics every single day.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 📱 Download
 
-2. Start the app
+> Coming soon to Google Play Store
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## ✨ Features
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 🎸 One new quote every day
+- 🏷️ Band, album, song and year information  
+- 📤 Share your daily quote with friends
+- 🌑 Pure dark UI built for metal fans
+- ☁️ Quotes fetched from the cloud — always fresh
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ Tech Stack
 
-When you're ready, run:
+| Technology | Purpose |
+|---|---|
+| React Native + Expo | Mobile app (Android & iOS) |
+| TypeScript | Type-safe code |
+| Supabase | Cloud database & API |
+| EAS Build | Cloud building & deployment |
+| GitHub | Version control & portfolio |
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🔒 Security
 
-## Learn more
+- Row Level Security (RLS) enabled on Supabase
+- Public read-only access — no user data collected
+- API keys stored as environment variables
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📖 Privacy Policy
 
-## Join the community
+[Privacy Policy](https://izdev-vc.github.io/metal-daily-quote/privacy-policy)
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🎯 What I Learned
+
+This is my first mobile app, built while learning vibe coding from scratch. Key learnings:
+
+- Building a React Native app with Expo from zero
+- Connecting a mobile app to a cloud database (Supabase)
+- Row Level Security for API protection
+- Publishing to Google Play Store
+- Using EAS Build for cloud compilation
+- Git & GitHub for version control
+
+---
+
+## 👤 Author
+
+**izdev-vc**
+- GitHub: [@izdev-vc](https://github.com/izdev-vc)
+
+---
