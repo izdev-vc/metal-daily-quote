@@ -33,6 +33,51 @@ A mobile app for Android (iOS coming soon) that delivers one handpicked quote fr
 | GitHub | Version control & portfolio |
 
 ---
+## 🚀 Getting Started (Local Development)
+
+### Prerequisites
+- Node.js 18+
+- Expo Go app on your phone
+
+### Installation
+
+Clone the repo and install dependencies:
+
+    git clone https://github.com/izdev-vc/metal-daily-quote.git
+    cd metal-daily-quote
+    npm install
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+    EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
+    EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+### Run
+
+    npx expo start
+
+Scan the QR code with Expo Go on your phone.
+
+---
+
+## 🗄️ Database Schema
+
+    CREATE TABLE quotes (
+      id bigint PRIMARY KEY,
+      quote text NOT NULL,
+      band varchar NOT NULL,
+      album varchar NOT NULL,
+      song varchar NOT NULL,
+      year int4,
+      active_date date UNIQUE,
+      created_at timestamptz DEFAULT now()
+    );
+
+---
+
+---
 
 ## 🔒 Security
 
