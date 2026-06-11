@@ -1,0 +1,41 @@
+name: Android Production Build
+on:
+  push:
+    branches:
+      - main # Automat uruchomi się tylko, gdy nowe zmiany trafią do głównej gałęzi (main)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Pobranie kodu z repozytorium
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Konfiguracja środowiska Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: ⚙️ Konfiguracja Java (wymagana dla Androida)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: 🏗 Konfiguracja Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 📦 Instalacja bibliotek (dependencies)
+        run: npm install
+
+      - name: 🚀 Budowanie aplikacji Android (Plik produkcyjny AAB)
+        run: |
+          cd android
+          ./gradlew bundleRelease
+
+      - name: 💾 Zapisanie gotowego pliku aplikacji
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: android/app/build/outputs/bundle/release/app-release.aab
