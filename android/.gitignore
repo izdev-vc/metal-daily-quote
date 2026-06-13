@@ -1,0 +1,20 @@
+# OSX
+#
+.DS_Store
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+
+# Bundle artifacts
+*.jsbundle
+# Zabezpieczenie kluczy Androida przed wysłaniem na GitHub
+*.keystore
+*.jks
+android/gradle.properties
