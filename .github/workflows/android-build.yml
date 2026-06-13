@@ -34,11 +34,20 @@ jobs:
       - name: 📦 Instalacja bibliotek (dependencies)
         run: npm install
 
+      - name: 🔑 Dekodowanie i przygotowanie klucza Keystore
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/app/my-upload-key.keystore
+
       - name: 🚀 Budowanie aplikacji Android (Plik produkcyjny AAB)
+        env:
+          MYAPP_RELEASE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          MYAPP_RELEASE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           cd android
-          ./gradlew bundleRelease
-
+          ./gradlew bundleRelease \
+            -P@MYAPP_RELEASE_STORE_PASSWORD=$MYAPP_RELEASE_STORE_PASSWORD \
+            -P@MYAPP_RELEASE_KEY_PASSWORD=$MYAPP_RELEASE_KEY_PASSWORD
+            
       - name: 💾 Zapisanie gotowego pliku aplikacji
         uses: actions/upload-artifact@v4
         with:
