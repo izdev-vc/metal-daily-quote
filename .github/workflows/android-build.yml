@@ -44,10 +44,8 @@ jobs:
           MYAPP_RELEASE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           cd android
-          ./gradlew bundleRelease \
-            -P@MYAPP_RELEASE_STORE_PASSWORD=$MYAPP_RELEASE_STORE_PASSWORD \
-            -P@MYAPP_RELEASE_KEY_PASSWORD=$MYAPP_RELEASE_KEY_PASSWORD
-            
+          ./gradlew bundleRelease
+
       - name: 💾 Zapisanie gotowego pliku aplikacji
         uses: actions/upload-artifact@v4
         with:
