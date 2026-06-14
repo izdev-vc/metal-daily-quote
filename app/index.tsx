@@ -47,6 +47,13 @@ function formatDate(d: Date) {
   return `${dd}.${mm}.${yyyy}`;
 }
 
+function getLocalDateString(d: Date) {
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 function SectionLabel({ text }: { text: string }) {
   return (
     <View style={styles.seclabel}>
@@ -73,7 +80,7 @@ export default function HomeScreen() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateString(new Date());
     supabase
       .from('bands')
       .select(
@@ -129,7 +136,7 @@ export default function HomeScreen() {
 
         {/* 2. HERO */}
         <View style={styles.hero}>
-          <Text style={styles.heroCaption}>TODAY'S BAND</Text>
+          <Text style={styles.heroCaption}>{"TODAY'S BAND"}</Text>
           <View style={styles.heroRule} />
           <Text style={styles.bandName} numberOfLines={2} adjustsFontSizeToFit>
             {band.name}
