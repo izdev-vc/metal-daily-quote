@@ -43,8 +43,8 @@ A mobile app for Android (iOS coming soon) that delivers one handpicked quote fr
 
 Clone the repo and install dependencies:
 
-    git clone https://github.com/izdev-vc/metal-daily-quote.git
-    cd metal-daily-quote
+    git clone https://github.com/izdev-vc/daily-metal-band.git
+    cd daily-metal-band
     npm install
 
 ### Environment Variables
@@ -89,7 +89,7 @@ Scan the QR code with Expo Go on your phone.
 
 ## 📖 Privacy Policy
 
-[Privacy Policy](https://izdev-vc.github.io/metal-daily-quote/privacy-policy)
+[Privacy Policy](https://izdev-vc.github.io/daily-metal-band/privacy-policy)
 
 ---
 
