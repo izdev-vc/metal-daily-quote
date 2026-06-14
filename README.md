@@ -1,4 +1,4 @@
-# 🤘 Metal Daily Quote
+# 🤘 Daily Metal Band
 
 > One powerful metal lyric. Every day. Forever.
 

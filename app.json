@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Daily Metal Band",
-    "slug": "MetalDailyQuote",
+    "slug": "DailyMetalBand",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -10,10 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.izdevvc.metaldailyquote"
+      "bundleIdentifier": "com.izdevvc.dailymetalband"
     },
     "android": {
-      "package": "com.izdevvc.metaldailyquote",
+      "package": "com.izdevvc.dailymetalband",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0d0d0d",

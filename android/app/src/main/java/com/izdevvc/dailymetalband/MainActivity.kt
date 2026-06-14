@@ -1,4 +1,4 @@
-package com.izdevvc.metaldailyquote
+package com.izdevvc.dailymetalband
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

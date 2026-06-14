@@ -1,4 +1,4 @@
-package com.izdevvc.metaldailyquote
+package com.izdevvc.dailymetalband
 
 import android.app.Application
 import android.content.res.Configuration

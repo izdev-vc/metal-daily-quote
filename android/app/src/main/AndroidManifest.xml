@@ -24,9 +24,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="metaldailyquote"/>
-        <data android:scheme="metaldailyband"/>
-        <data android:scheme="exp+metaldailyquote"/>
+        <data android:scheme="dailymetalband"/>
+        <data android:scheme="exp+dailymetalband"/>
       </intent-filter>
     </activity>
   </application>

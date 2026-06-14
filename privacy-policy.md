@@ -1,8 +1,8 @@
-# Privacy Policy for Metal Daily Quote
+# Privacy Policy for Daily Metal Band
 
 Last updated: April 20, 2026
 
-Metal Daily Quote ("the App") is developed by izdev-vc.
+Daily Metal Band ("the App") is developed by izdev-vc.
 
 ## Information We Collect
 The App does not collect any personal information from users.
