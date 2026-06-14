@@ -8,6 +8,7 @@ import {
     View,
 } from 'react-native';
 import ViewShot from 'react-native-view-shot';
+import { COLORS } from '../constants/colors';
 
 type Props = {
   bandName: string;
@@ -48,22 +49,13 @@ export default function ShareCard({ bandName, genre, country, foundedYear }: Pro
         style={styles.cardWrapper}
       >
         <View style={styles.card}>
-          {/* Tło z gradientem */}
           <View style={styles.bgAccent} />
 
-          {/* Górna etykieta */}
           <Text style={styles.labelTop}>DAILY METAL BAND</Text>
-
-          {/* Linia */}
           <View style={styles.rule} />
-
-          {/* Nazwa zespołu */}
           <Text style={styles.bandName}>{bandName.toUpperCase()}</Text>
-
-          {/* Linia */}
           <View style={styles.rule} />
 
-          {/* Detale */}
           <View style={styles.details}>
             <View style={styles.detail}>
               <Text style={styles.detailLabel}>GENRE</Text>
@@ -81,7 +73,6 @@ export default function ShareCard({ bandName, genre, country, foundedYear }: Pro
             </View>
           </View>
 
-          {/* Stopka */}
           <Text style={styles.footer}>dailymetalband.app</Text>
         </View>
       </ViewShot>
@@ -104,7 +95,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    backgroundColor: '#0d0d0d',
+    backgroundColor: COLORS.bg,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 80,
@@ -117,7 +108,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: '50%',
-    backgroundColor: 'rgba(217,164,65,0.05)',
+    backgroundColor: COLORS.amberGlow,
     borderTopLeftRadius: 600,
     borderTopRightRadius: 600,
   },
@@ -125,21 +116,21 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 28,
     letterSpacing: 12,
-    color: '#8a8579',
+    color: COLORS.dim,
     marginBottom: 40,
     textAlign: 'center',
   },
   rule: {
     width: 120,
     height: 3,
-    backgroundColor: '#d9a441',
+    backgroundColor: COLORS.amber,
     marginVertical: 40,
   },
   bandName: {
     fontFamily: 'System',
     fontSize: 160,
     fontWeight: '900',
-    color: '#e8dcc4',
+    color: COLORS.bone,
     textAlign: 'center',
     lineHeight: 155,
     letterSpacing: 4,
@@ -158,19 +149,19 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 22,
     letterSpacing: 6,
-    color: '#8a8579',
+    color: COLORS.dim,
   },
   detailValue: {
     fontFamily: 'System',
     fontSize: 32,
     fontWeight: '700',
-    color: '#e8dcc4',
+    color: COLORS.bone,
     letterSpacing: 2,
   },
   detailSep: {
     width: 2,
     height: 60,
-    backgroundColor: '#2a2722',
+    backgroundColor: COLORS.line,
   },
   footer: {
     position: 'absolute',
@@ -178,10 +169,10 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 24,
     letterSpacing: 6,
-    color: '#4a4640',
+    color: COLORS.faint,
   },
   btn: {
-    backgroundColor: '#cc0000',
+    backgroundColor: COLORS.red,
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center',

@@ -9,13 +9,11 @@ import {
   IBMPlexSans_400Regular,
   IBMPlexSans_500Medium,
 } from '@expo-google-fonts/ibm-plex-sans';
-import { createClient } from '@supabase/supabase-js';
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
 import {
   Linking,
   ScrollView,
-  Share,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -23,12 +21,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ShareCard from '../components/ShareCard';
-
-// ─── Supabase ─────────────────────────────────────────────────
-const supabase = createClient(
-  process.env.EXPO_PUBLIC_SUPABASE_URL!,
-  process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { COLORS } from '../constants/colors';
+import { supabase } from '../services/supabase';
 
 // ─── Typ rekordu z bazy ───────────────────────────────────────
 type Band = {
@@ -76,6 +70,7 @@ export default function HomeScreen() {
   });
 
   const [band, setBand] = useState<Band | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
@@ -86,29 +81,34 @@ export default function HomeScreen() {
       )
       .eq('active_date', today)
       .single()
-      .then(({ data }) => {
-        if (data) setBand(data as Band);
+      .then(({ data, error: fetchError }) => {
+        if (fetchError) {
+          setError('Could not load today\'s band. Check your connection.');
+        } else if (data) {
+          setBand(data as Band);
+        } else {
+          setError('No band scheduled for today.');
+        }
       });
   }, []);
 
-  if (!fontsLoaded || !band) return null;
+  if (!fontsLoaded) return null;
 
-  const handleShare = async () => {
-    await Share.share({
-      message:
-        `Today's metal band: ${band.name} — from ${band.country}, founded ${band.year_founded}.\n` +
-        `Genre: ${band.genre}.\n` +
-        `Essential album: ${band.essential_album_title} (${band.essential_album_year}).\n\n` +
-        `Daily Metal Band`
-        // Odkomentować po publikacji aplikacji w Google Play. Zastąp PACKAGE_NAME prawdziwym package name z app.json.
-        // + `\n\nhttps://play.google.com/store/apps/details?id=PACKAGE_NAME`,
-    });
-  };
+  if (error) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <Text style={styles.errorText}>{error}</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (!band) return null;
 
   const handleWikipedia = async () => {
-    if (band.wikipedia_url) {
+    const url = band.wikipedia_url;
+    if (url && (url.startsWith('https://') || url.startsWith('http://'))) {
       try {
-        await Linking.openURL(band.wikipedia_url);
+        await Linking.openURL(url);
       } catch (e) {
         console.log('Cannot open URL:', e);
       }
@@ -212,17 +212,6 @@ export default function HomeScreen() {
 }
 
 // ─── Style ────────────────────────────────────────────────────
-const COLORS = {
-  bg: '#0d0d0d',
-  red: '#cc0000',
-  amber: '#d9a441',
-  bone: '#e8dcc4',
-  dim: '#8a8579',
-  faint: '#4a4640',
-  line: '#2a2722',
-  moss: '#6cd47e',
-};
-
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
@@ -429,16 +418,14 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
     color: '#fff',
   },
-  btnSecondary: {
-    borderWidth: 1,
-    borderColor: COLORS.line,
-    backgroundColor: 'transparent',
-  },
-  btnSecondaryText: {
-    fontFamily: 'BebasNeue_400Regular',
-    fontSize: 16,
-    letterSpacing: 3,
-    color: COLORS.bone,
+  // ERROR
+  errorText: {
+    fontFamily: 'IBMPlexMono_400Regular',
+    fontSize: 13,
+    color: COLORS.dim,
+    textAlign: 'center',
+    marginTop: 40,
+    paddingHorizontal: 24,
   },
 
   // FOOTER
